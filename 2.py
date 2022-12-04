@@ -1,6 +1,5 @@
 f = open('input', 'r')
-one = 0
-two = 0
+one = two = 0
 for line in f.readlines():
     if line == '\n':
         break
