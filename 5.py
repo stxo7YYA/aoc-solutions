@@ -27,5 +27,5 @@ for i in range(sep, len(f) - 1):
         t[dst].append(t[src][-j])
     for j in range(n):
         t[src].pop()
-print('Part One', ''.join([x[-1] if len(x) else '-' for x in s]))
-print('Part Two', ''.join([x[-1] if len(x) else '-' for x in t]))
+print('Part One', ''.join([x[-1] if len(x) else '' for x in s]))
+print('Part Two', ''.join([x[-1] if len(x) else '' for x in t]))
