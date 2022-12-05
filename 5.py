@@ -21,8 +21,7 @@ for i in range(sep, len(f) - 1):
     src -= 1
     dst -= 1
     for j in range(n):
-        s[dst].append(s[src][-1])
-        s[src].pop()
+        s[dst].append(s[src].pop())
     for j in range(n, 0, -1):
         t[dst].append(t[src][-j])
     for j in range(n):
