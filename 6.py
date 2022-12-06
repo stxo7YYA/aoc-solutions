@@ -1,8 +1,8 @@
 f = list(open('input', 'r'))[0][:-1]
 
-def solution(n):
+def solution(n: int) -> int:
     for i in range(len(f)):
-        if i + n <= len(f) and len(set(f[i:i + n])) == n:
+        if i + n <= len(f) and len({*f[i:i + n]}) == n:
             return i + n
 
 print('Part One', solution(4))
