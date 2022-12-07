@@ -1,13 +1,5 @@
 f = open('input', 'r').read().split('$')[1:]
 
-def recurse(n):
-    for i in range(len(path)):
-        key = str(path[:len(path) - i])
-        if key in cache:
-            cache[key] += n
-        else:
-            cache[key] = n
-
 path = []
 cache = dict()
 for seg in f:
@@ -26,7 +18,12 @@ for seg in f:
             spl = lns[i].split()
             if spl[0] != 'dir':
                 n += int(spl[0])
-        recurse(n)
+        for i in range(len(path)):
+            key = str(path[:len(path) - i])
+            if key in cache:
+                cache[key] += n
+            else:
+                cache[key] = n
 
 one = 0
 for path in cache:
