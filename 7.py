@@ -1,29 +1,38 @@
 f = open('input', 'r').read().split('$')[1:]
 
-path = []
+path = list()
 cache = dict()
-for seg in f:
-    lns = seg.split('\n')
-    cmd = lns[0].split()
+
+for x in f:
+    y = x.split('\n')
+    cmd = y[0].split()
+
+    # Update path
     if cmd[0] == 'cd':
         if cmd[1] == '..':
             path.pop()
         else:
             path.append(cmd[1])
+
+    # Process file sizes
     if cmd[0] == 'ls':
-        n = 0
-        for i in range(1, len(lns) - 1):
-            if not lns[i]:
+
+        # Determine the total size of visible files
+        size = 0
+        for i in range(1, len(y) - 1):
+            if not y[i]:
                 break
-            spl = lns[i].split()
-            if spl[0] != 'dir':
-                n += int(spl[0])
+            data = y[i].split()
+            if data[0] != 'dir':
+                size += int(data[0])
+
+        # Propagate the total size through the path
         for i in range(len(path)):
             key = str(path[:len(path) - i])
             if key in cache:
-                cache[key] += n
+                cache[key] += size
             else:
-                cache[key] = n
+                cache[key] = size
 
 one = 0
 for path in cache:
