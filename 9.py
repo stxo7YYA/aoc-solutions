@@ -4,9 +4,8 @@ one, two = set(), set()
 for line in f:
     if line == '\n': break
     m = line.split()
-    d = m[0]
     for i in range(int(m[1])):
-        match d:
+        match m[0]:
             case 'U': n[0][0] -= 1
             case 'R': n[0][1] += 1
             case 'D': n[0][0] += 1
